@@ -1,0 +1,9 @@
+func main() {
+	result, err := divide(3, 0)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error: %s\n", err.Error())
+		os.Exit(1)
+	}
+
+	fmt.Printf("result: %d\n", result)
+}

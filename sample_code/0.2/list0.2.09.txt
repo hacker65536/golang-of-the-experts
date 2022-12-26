@@ -1,0 +1,16 @@
+// func UpperCount(r io.Reader) (int, error)のテスト
+func TestUpperCount(t *testing.T) {
+	str, want := "AbcD", 2
+	var buf bytes.Buffer
+	r := io.TeeReader(strings.NewReader(str), &buf)
+	got, err := UpperCount(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got != want {
+		t.Error(want, "!=", got)
+	}
+	if str != buf.String() {
+		t.Error("読み込んだ文字列が一致しない")
+	}
+}

@@ -1,0 +1,4 @@
+type emptyInterface struct {
+	typ unsafe.Pointer // 型情報へのポインタ
+	ptr unsafe.Pointer // 値へのポインタ
+}

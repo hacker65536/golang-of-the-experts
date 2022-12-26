@@ -1,0 +1,16 @@
+import (
+	"context"
+	"external"
+	"fmt"
+)
+
+func main() {
+	ctx := context.Background()
+	valueCtx := external.WithRequestID(ctx, 123)     // (1)
+	requestID, ok := external.GetRequestID(valueCtx) // (2)
+	if !ok {
+		fmt.Println("requestID‚ğ‚Á‚Ä‚È‚©‚Á‚½")
+		return
+	}
+	fmt.Println(requestID) // Output: 123
+}

@@ -1,0 +1,11 @@
+func main() {
+	// コンテキスト木の根を生成する
+	emptyCtx := context.Background()
+	// emptyCtxを利用して必要なコンテキストを生成する
+	cancelCtx, cancel :=
+		context.WithCancel(emptyCtx)
+	defer cancel()
+	// 必要な処理にほかの機能を持つコンテキストを渡す
+	doSomeThing(cancelCtx)
+	/* (略) */
+}

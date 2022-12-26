@@ -1,0 +1,8 @@
+// 空で初期化
+mapEmpty := map[string]int{}
+
+// make関数を使って初期化
+mapMake := make(map[string]int)
+
+// あらかじめ容量を確保した状態で初期化
+mapCap := make(map[string]int, 10)

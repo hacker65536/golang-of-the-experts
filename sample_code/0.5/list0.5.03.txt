@@ -1,0 +1,3 @@
+func Content(v *Value) [64]byte {
+	return v.content
+}

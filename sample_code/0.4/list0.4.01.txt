@@ -1,0 +1,6 @@
+type Context interface {
+	Deadline() (deadline time.Time, ok bool) // (1)
+	Done() <-chan struct{}                   // (2)
+	Err() error                              // (3)
+	Value(key interface{}) interface{}       // (4)
+}

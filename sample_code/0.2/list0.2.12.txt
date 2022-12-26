@@ -1,0 +1,11 @@
+func main() {
+	f, err := os.Open("sample.txt")
+	if err != nil { /* エラー処理 */
+	}
+	defer f.Close()
+	h := sha256.New()
+	_, err = io.Copy(h, f)
+	if err != nil { /* エラー処理 */
+	}
+	fmt.Printf("%x¥n", h.Sum(nil))
+}

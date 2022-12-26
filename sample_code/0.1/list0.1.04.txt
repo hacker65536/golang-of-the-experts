@@ -1,0 +1,8 @@
+// ゼロ値で初期化
+var m map[string]int
+
+// 2つの要素を持つマップを定義
+mapLiteral := map[string]int{
+	"John":    42,
+	"Richard": 33,
+}

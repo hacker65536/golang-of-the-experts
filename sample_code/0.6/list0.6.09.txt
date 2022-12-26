@@ -1,0 +1,22 @@
+package server
+
+func handleSignupRequest(name string) error {
+	/* (—ª) */
+	if err := db.CreateUser(name); err != nil {
+		return &Error{
+			Op:  "signup",
+			err: err,
+		}
+	}
+
+	return nil
+}
+
+type Error struct {
+	Op  string
+	err error
+}
+
+func (e *Error) Error() string {
+	return fmt.Sprintf("handle %s request:%s", e.Op, e.err.Error())
+}

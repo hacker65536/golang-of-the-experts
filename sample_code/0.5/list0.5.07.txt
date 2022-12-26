@@ -1,0 +1,13 @@
+// Programs using times should typically store and pass them as values,
+// not pointers. That is, time variables and struct fields should be of
+// type time.Time, not *time.Time.
+
+type Time struct {
+	wall uint64
+	ext  int64
+	loc  *Location
+}
+
+func (t Time) Unix() int64 {
+	return t.unixSec()
+}

@@ -1,0 +1,5 @@
+src1, src2 := []int{1, 2}, []int{3, 4, 5}
+
+// appendでスライスを連結する
+dst := append(src1, src2...)
+// [1 2 3 4 5]

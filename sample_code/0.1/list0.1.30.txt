@@ -1,0 +1,9 @@
+var i int32 = 100
+var j int64
+
+// 暗黙的なキャストがないので、コンパイル時にエラーになる
+j = i // compile error: cannot use i (type int32) as type int64 in assignment
+
+// 明示的にキャストすることで代入できる
+j = int64(i)
+fmt.Println(j) // Output: 100

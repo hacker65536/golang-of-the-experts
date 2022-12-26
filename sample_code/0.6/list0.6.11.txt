@@ -1,0 +1,10 @@
+if err := handleSignupRequest(name); err != nil {
+	if e, ok := errors.Unwrap(err).(*db.Error); ok {
+		// ステータスコード500を返す処理
+	}
+}
+/* (略) */
+
+func (e *Error) Unwrap() error {
+	return e.err
+}

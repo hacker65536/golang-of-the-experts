@@ -1,0 +1,10 @@
+func handler(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+	zr, err := zlib.NewReader(r.Body)
+	if err != nil { /* エラー処理 */
+	}
+	defer zr.Close()
+	_, err = io.Copy(w, zr)
+	if err != nil { /* エラー処理 */
+	}
+}

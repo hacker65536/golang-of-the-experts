@@ -1,0 +1,15 @@
+type Crier interface {
+	// Cryメソッドを満たしていれば、Crierインタフェースを満たしていると言える
+	Cry() string
+}
+
+type Duck struct{}
+
+func (d Duck) Cry() string {
+	return "Quack"
+}
+
+// Duck型はCryメソッドを実装しているのでCrierインタフェースを満たしている
+var c Crier = Duck{}
+
+fmt.Println(c.Cry()) // Output: Quack

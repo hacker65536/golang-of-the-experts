@@ -1,0 +1,17 @@
+// ▼要素を実体で管理する場合
+c := []T{}
+c = append(c, T{})
+v := c[0]
+v.Number = 1
+fmt.Println(c[0].Number) // 0
+c[0].Number = 1
+fmt.Println(c[0].Number) // 1
+
+// ▼要素をポインタで管理する場合
+c := []*T{}
+c = append(c, &T{})
+v := c[0]
+v.Number = 1
+fmt.Println(c[0].Number) // 1
+c[0].Number = 2
+fmt.Println(c[0].Number) // 2

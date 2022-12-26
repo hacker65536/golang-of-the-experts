@@ -1,0 +1,27 @@
+func exampleWithTimeout() {
+	ctx := context.Background()
+	// 期間を決めてWithTimeoutでコンテキストを生成
+	d := 15 * time.Second
+	timerCtx, cancel := context.WithTimeout(ctx, d) // (1)
+	// リソース解放を忘れない
+	defer cancel()
+
+	// 10秒が経ったときか、timerCtxがキャンセルされたときか、どちらか先のほうが実行される
+	select { // (2)
+	case <-time.After(10 * time.Second):
+		fmt.Println("10秒が経ちました")
+	case <-timerCtx.Done():
+		fmt.Println(timerCtx.Err())
+	}
+
+	// (2)を通過後、さらに10秒が経ったときか、timerCtxがキャンセルされたときか、どちらか先のほうが実行される
+	select { // (3)
+	case <-time.After(10 * time.Second):
+		fmt.Println("10秒が経ちました")
+	case <-timerCtx.Done():
+		fmt.Println(timerCtx.Err())
+	}
+}
+
+// Output: 10秒が経ちました
+// context deadline exceeded

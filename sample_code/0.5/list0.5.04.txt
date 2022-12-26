@@ -1,0 +1,17 @@
+// ▼要素を実体で管理する場合
+type Container struct{ V T }
+var c Container
+v := c.V
+v.Number = 1
+fmt.Println(c.V.Number) // 0
+c.V.Text = "hello"
+fmt.Println(c.V.Text) // hello
+
+// ▼要素をポインタで管理する場合
+type Container struct{ V *T }
+c := Container{V: &T{}}
+v := c.V
+v.Number = 1
+fmt.Println(c.V.Number) // 1
+c.V.Text = "hello"
+fmt.Println(c.V.Text) // hello

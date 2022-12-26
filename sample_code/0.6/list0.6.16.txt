@@ -1,0 +1,9 @@
+pod, err := c.store.GetPod(ctx, name, namespace)
+if err != nil {
+	if errors.Is(err, store.ErrNotFound) {
+		logger.Info("pod not found by node id")
+		return fmt.Errorf("pod not found by node id")
+	}
+	logger.Error(err, "failed to get pod")
+	return fmt.Errorf("failed to get pod: %w", err)
+}

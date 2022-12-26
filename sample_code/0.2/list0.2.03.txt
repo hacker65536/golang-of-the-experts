@@ -1,0 +1,5 @@
+type MyWriter struct{ w io.Writer }
+
+func (mw *MyWriter) WriteString(s string) (n int, err error) {
+	return io.WriteString(mw.w, s)
+}

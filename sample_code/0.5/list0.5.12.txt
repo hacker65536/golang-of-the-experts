@@ -1,0 +1,5 @@
+type Slice struct {
+	Data uintptr // スライス要素が連続して並んでいる領域の先頭アドレス
+	Len  int     // スライスの長さ
+	Cap  int     // スライスの容量
+}

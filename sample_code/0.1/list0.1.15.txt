@@ -1,0 +1,30 @@
+m := map[string]int{
+	"John":    42,
+	"Richard": 33,
+}
+
+// 返却値を1つにすると値のみを受け取る
+age := m["John"]
+fmt.Println(age) // Output: 42
+
+// 返却値を2つにすると値だけでなく、キーの存在有無も受け取る
+age, ok := m["Jane"]
+fmt.Println(age, ok) // Output: 0 false
+
+// キーの存在有無のみを受け取ることができる
+_, ok = m["Richard"]
+fmt.Println(ok) // Output: true
+
+// マップへの追加
+m["Jane"] = 61
+fmt.Println(m["Jane"]) // Output: 61
+
+// 任意のキーにひもづく値の更新
+m["Jane"] = 27
+fmt.Println(m["Jane"]) // Output: 27
+
+// 任意のキーと値の削除
+delete(m, "John")
+
+_, ok = m["John"]
+fmt.Println(ok) // Output: false

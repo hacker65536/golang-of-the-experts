@@ -1,0 +1,35 @@
+package vault
+
+import (
+	"bytes"
+	"io"
+	"time"
+)
+
+type secret struct {
+	ID         string
+	CreateTime time.Time
+
+	token      string
+}
+
+func (s *secret) Read(p []byte) (int, error) {
+	return bytes.NewBuffer(p).WriteString(s.token)
+}
+
+func NewSecret() io.Reader {
+	return &secret{
+		ID:         "dummy_id",
+		CreateTime: time.Now(),
+		token:      "dummy_token",
+	}
+}
+
+s := vault.NewSecret()
+
+err := json.NewEncoder(os.Stdout).Encode(s)
+if err != nil {
+	fmt.Println("failed to json encode, error =", err)
+}
+// tokenフィールドは、JSONに含まれていないことに注目
+// Output: {"ID":"dummy_id","CreateTime":"2009-11-10T23:00:00Z"}

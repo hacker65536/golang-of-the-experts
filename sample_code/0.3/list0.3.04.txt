@@ -1,0 +1,8 @@
+for {
+	select {
+	case <-time.Tick(1 * time.Second):
+		fmt.Println("waiting...")
+	case <-doneCh:
+		/* (—ª) */
+	}
+}

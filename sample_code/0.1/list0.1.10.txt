@@ -1,0 +1,11 @@
+src := []int{1, 2, 3, 4, 5}
+
+// 3番めの要素（3）を削除する
+i := 2
+dst := append(src[:i], src[i+1:]...)
+// [1 2 4 5]
+
+// appendの代わりにcopyを利用する場合
+src = []int{1, 2, 3, 4, 5}
+dst = src[:i+copy(src[i:], src[i+1:])]
+// [1 2 4 5]

@@ -1,0 +1,17 @@
+// マップのゼロ値はnilをとる
+var m map[string]int
+fmt.Println(m == nil) // Output: true
+
+// 要素数を取得することは可能
+fmt.Println(len(m)) // Output: 0
+
+// 任意のキーから、値と、キーの存在有無を取得することも可能
+v, ok := m["John"]
+fmt.Println(v, ok) // Output: 0 false
+
+// 任意のキーから削除を実行することも可能
+delete(m, "Richard")
+
+// キーと値の追加は実行時にパニックが発生
+m["John"] = 42
+// panic: assignment to entry in nil map

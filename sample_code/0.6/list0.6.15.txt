@@ -1,0 +1,3 @@
+if err := db.CreateUser(name); err != nil {
+	return fmt.Errorf("handle signup request: %w", err)
+}

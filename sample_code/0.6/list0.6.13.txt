@@ -1,0 +1,14 @@
+func As(err error, target interface{}) bool {
+	/* (—ª) */
+	for err != nil {
+		if reflectlite.TypeOf(err).AssignableTo(targetType) {
+			val.Elem().Set(reflectlite.ValueOf(err))
+			return true
+		}
+		if x, ok := err.(interface{ As(interface{}) bool }); ok && x.As(target) {
+			return true
+		}
+		err = Unwrap(err)
+	}
+	return false
+}

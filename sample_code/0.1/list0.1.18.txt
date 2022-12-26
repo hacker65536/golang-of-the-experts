@@ -1,0 +1,15 @@
+// パッケージ外からも参照できる
+type Export struct {
+	// パッケージ外からも参照できる
+	Name string
+	// パッケージ外からは参照できない
+	age int
+}
+
+// パッケージ外から参照できない
+type unexport struct {
+	// パッケージ外からも参照できる
+	Name string
+	// パッケージ外からは参照できない
+	age int
+}

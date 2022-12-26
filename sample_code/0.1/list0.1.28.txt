@@ -1,0 +1,5 @@
+// CryメソッドとFootstepsメソッドを実装していないと、CryFootstepperインタフェースを満たせない
+type CryFootstepper interface {
+	Crier
+	Footstepper
+}

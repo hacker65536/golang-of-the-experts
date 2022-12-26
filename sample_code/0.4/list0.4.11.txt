@@ -1,0 +1,20 @@
+package external // (1)
+
+// プライベートタイプを宣言
+type requestIDKey struct{} // (2)
+
+// 外部からrequestIDを取得するための関数
+func GetRequestID(ctx context.Context) (int, bool) { // (3)
+	// 値取得と型のキャストを行い、値が存在 しないか、キャストできない場合は 0, falseが返される
+	r, ok := ctx.Value(requestIDKey{}).(int)
+	if ok {
+		return r, true
+	}
+	return 0, false
+}
+
+// 外部からRequestIDを保存するための関数
+func WithRequestID(ctx context.Context, reqID int) context.Context { // (4)
+	// パッケージ内で宣言したキーで値を保存
+	return context.WithValue(ctx, requestIDKey{}, reqID)
+}

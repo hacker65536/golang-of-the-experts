@@ -1,0 +1,8 @@
+func IsPNG(r io.ReadSeeker) (bool, error) {
+	/* (略) */
+	_, err = r.Seek(0, io.SeekStart)
+	if err != nil {
+		return false, err
+	}
+	return bytes.Equal(magicnum, buf), nil
+}

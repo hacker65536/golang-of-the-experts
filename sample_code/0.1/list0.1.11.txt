@@ -1,0 +1,15 @@
+src := []int{1, 2, 3, 4, 5}
+
+// 方法1
+for i := len(src)/2 - 1; i >= 0; i-- {
+	opp := len(src) - 1 - i
+	src[i], src[opp] = src[opp], src[i]
+}
+fmt.Println(src) // Output: [5 4 3 2 1]
+
+// 方法2
+for left, right := 0, len(src)-1; left < right; left, right = left+1, right-1 {
+	src[left], src[right] = src[right], src[left]
+}
+fmt.Println(src) // Output: [1 2 3 4 5]
+// 方法1で逆順になっているので元に戻った

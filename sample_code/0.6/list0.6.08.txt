@@ -1,0 +1,15 @@
+package db
+
+func CreateUser(name string) error {
+	/* (—ª) */
+	return &Error{Op: "write", Table: "user"}
+}
+
+type Error struct {
+	Op    string
+	Table string
+}
+
+func (e *Error) Error() string {
+	return fmt.Sprintf("database: %s %s", e.Op, e.Table)
+}

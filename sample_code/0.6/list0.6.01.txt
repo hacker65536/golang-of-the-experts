@@ -1,0 +1,4 @@
+file, err := os.Open("example.txt")
+if err != nil {
+	// ƒGƒ‰[ˆ—
+}

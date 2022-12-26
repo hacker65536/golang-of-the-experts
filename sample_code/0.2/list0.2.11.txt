@@ -1,0 +1,15 @@
+func main() {
+	f, err := os.Create("sample.txt")
+	if err != nil { /* エラー処理 */
+	}
+	h := sha256.New()
+	w := io.MultiWriter(f, h)
+	// ファイル書き出しと同時にハッシュ値も求める
+	_, err = io.WriteString(w, "hello")
+	if err != nil { /* エラー処理 */
+	}
+	err = f.Close()
+	if err != nil { /* エラー処理 */
+	}
+	fmt.Printf("%x¥n", h.Sum(nil))
+}

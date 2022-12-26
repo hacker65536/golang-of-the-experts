@@ -1,0 +1,21 @@
+package server
+
+func (handler *signup) ServeHTTP( /* (—ª) */ ) {
+	/* (—ª) */
+	if err := handleSignupRequest(name); err != nil {
+		fmt.Fprintf(os.Stderr, "error: %s\n", err.Error())
+		/* (—ª) */
+	}
+}
+
+func handleSignupRequest(name string) error {
+	if err := validator.ValidateRequest(name); err != nil {
+		return err
+	}
+
+	if err := db.CreateUser(name); err != nil {
+		return err
+	}
+
+	return nil
+}

@@ -1,0 +1,6 @@
+if err := handleSignupRequest(name); err != nil {
+	var de *db.Error
+	if errors.As(err, &de) {
+		// ステータスコード500を返す処理
+	}
+}

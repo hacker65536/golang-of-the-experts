@@ -1,0 +1,8 @@
+ch := make(chan int)
+/* (—ª) */
+
+select {
+case ch <- 100:
+	fmt.Println("sent")
+default:
+}

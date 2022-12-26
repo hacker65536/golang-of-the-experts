@@ -1,0 +1,22 @@
+package server
+/* (略) */
+
+if err := handleSignupRequest(name); err != nil {
+	if errors.Is(err, db.WriteUserTableErr) {
+		// ステータスコード500を返す処理
+	}
+}
+/* (略) */
+
+package db
+
+var WriteUserTableErr = &Error{Op: "write", Table: "user"}
+
+func (e *Error) Is(err error) bool {
+	var de *Error
+	if errors.As(err, &de) {
+		return e.Op == de.Op && e.Table == de.Table
+	}
+
+	return false
+}

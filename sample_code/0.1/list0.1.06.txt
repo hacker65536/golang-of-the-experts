@@ -1,0 +1,7 @@
+src := []int{1, 2, 3, 4}
+fmt.Println(src, len(src), cap(src))
+// Output: [1 2 3 4] 4 4
+
+src = append(src, 5)
+fmt.Println(src, len(src), cap(src))
+// Output: [1 2 3 4 5] 5 8

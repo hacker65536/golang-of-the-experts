@@ -1,0 +1,6 @@
+if err := handleSignupRequest(name); err != nil {
+	if e, ok := err.(*db.Error); ok {
+		// ステータスコード500を返す処理
+	}
+	// そのほかのエラーの処理
+}

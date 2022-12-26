@@ -1,0 +1,4 @@
+type String struct {
+	Data uintptr // 文字列データの先頭アドレス
+	Len  int     // 文字列の長さ
+}

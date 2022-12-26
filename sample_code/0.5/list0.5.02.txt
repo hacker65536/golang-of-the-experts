@@ -1,0 +1,7 @@
+type Value struct {
+	content [64]byte
+}
+
+func (v *Value) Content() [64]byte {
+	return v.content
+}

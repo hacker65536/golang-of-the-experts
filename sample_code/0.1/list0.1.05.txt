@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	// 新しい型MyDurationをtime.Durationを基底として定義
+	type MyDuration time.Duration
+	d := MyDuration(100)
+
+	// %Tを使うことで、変数に代入されている値の型情報を出力する
+	fmt.Printf("%T", d)
+	// Output: main.MyDuration
+
+	// MyDuration型で基底型として定義しているtime.Durationへのキャスト
+	td := time.Duration(d)
+
+	// 型の定義がされていない定数（100）に対して明示的なキャストなしでの演算
+	md := 100 * d
+
+	fmt.Printf("td: %T, md: %T", td, md)
+	// Output: td: time.Duration, md: main.MyDuration
+}

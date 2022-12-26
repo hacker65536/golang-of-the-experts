@@ -1,0 +1,20 @@
+func exampleWithDeadline() {
+	ctx := context.Background()
+	// 指定時刻を生成
+	d := time.Date(2022, 12, 18, 0, 0, 0, 0, time.UTC) // (1)
+	// 指定時刻にキャンセルされるコンテキストを生成する
+	timerCtx, cancel := context.WithDeadline(ctx, d) // (2)
+	defer cancel()                                   // (6)
+
+	// 指定時刻の1日後の時刻を生成する
+	nd := d.AddDate(0, 0, 1)
+	// 時刻ndになったときか、timerCtxがキャンセルされたときか、どちらか先のほうが実行される
+	select { // (3)
+	case <-time.After(time.Until(nd)): // (4)
+		fmt.Println("2022年12月19日0時になりました")
+	case <-timerCtx.Done(): // (5)
+		fmt.Println(timerCtx.Err())
+	}
+}
+
+// Output: context deadline exceeded

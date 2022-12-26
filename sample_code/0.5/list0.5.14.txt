@@ -1,0 +1,22 @@
+type T struct {
+	A int
+	B string
+	C []int
+	D int
+}
+
+var v T
+fmt.Printf("v address = %p\n", &v)
+// v address = 0xc00010c040
+fmt.Printf("v.A address = %p\n", &v.A)
+// v.A address = 0xc00010c040
+fmt.Printf("v.B address = %p\n", &v.B)
+// v.B address = 0xc00010c048
+fmt.Printf("v.C address = %p\n", &v.C)
+// v.C address = 0xc00010c058
+fmt.Printf("A size = %d\n", uintptr(unsafe.Pointer(&v.B))-uintptr(unsafe.Pointer(&v.A)))
+// A size = 8
+fmt.Printf("B size = %d\n", uintptr(unsafe.Pointer(&v.C))-uintptr(unsafe.Pointer(&v.B)))
+// B size = 16
+fmt.Printf("C size = %d\n", uintptr(unsafe.Pointer(&v.D))-uintptr(unsafe.Pointer(&v.C)))
+// C size = 24

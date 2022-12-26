@@ -1,0 +1,4 @@
+if y == 0 {
+	return 0, errors.New("divide by zero")
+}
+return x / y, nil

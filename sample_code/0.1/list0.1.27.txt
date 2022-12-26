@@ -1,0 +1,13 @@
+// Bad
+type DuckTester interface {
+	Cry() string
+	Footsteps() string
+}
+
+// Good
+type Crier interface {
+	Cry() string
+}
+type Footstepper interface {
+	Footsteps() string
+}

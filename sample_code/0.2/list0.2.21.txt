@@ -1,0 +1,7 @@
+type StatFS interface {
+	FS
+	Stat(name string) (FileInfo, error)
+}
+
+// StatFS型を実装するためのヘルパー関数
+func Stat(fsys FS, name string) (FileInfo, error) {}
