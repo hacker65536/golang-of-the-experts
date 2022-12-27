@@ -6,6 +6,8 @@
 https://go.dev/ref/spec#Types
 ### 組み込み型一覧 (primtive)
 
+import をしなくても使える
+
 
 | 種類 | 型名 |
 |--------|----|
@@ -16,6 +18,8 @@ https://go.dev/ref/spec#Types
 | 真偽値     | bool |
 | エラー     | error |
 
+
+型名は予約後ではないので、変数名として使うことができるが混乱をさけるために使わないほうが良い
 https://go.dev/play/p/39uG5TFg3ju
 
 
@@ -30,20 +34,29 @@ https://go.dev/play/p/mzZjR_Vh4Ol
 
 
 配列
+型とデータ数は一度決めたら固定
 https://go.dev/play/p/gYFVhCmhGiA
 
 
 スライス
+スライスは型とデータ数を持たないために可変である
 https://go.dev/play/p/nblFiIojR9V
 
 
 マップ
+キーと値は別々の型を使うことができる、ただしキーは比較演算子で比較できる型でなければならない
 https://go.dev/play/p/LNtBCLF0XJy
 
 ### ユーザ定義型 (type definitions)
 
 
 ユーザ定義型
+
+```go
+type MyDuration time.Duration
+                // ↑ 基底型 (underlying type)
+```
+
 https://go.dev/play/p/5y7QES8P83D
 
 
